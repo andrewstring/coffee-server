@@ -1,5 +1,5 @@
-const drinks = require("../Models/drinks").default;
-const bakedGoods = require("../Models/bakedGoods").default;
+const drinks = require("../Models/drinks");
+const bakedGoods = require("../Models/baked-goods");
 
 //Init transactions
 const initDrinksTransaction = async (db) => {
@@ -19,7 +19,7 @@ const dropDrinksTransaction = async (db) => {
 
 const initBakedGoodsTransaction = async (db) => {
   try {
-    await db.createCollection(bakedGoods.key, bakedGoods.validator);
+    await db.createCollection(bakedGoods.key);
   } catch (err) {
     console.error(err);
   }
@@ -32,7 +32,7 @@ const dropBakedGoodsTransaction = async (db) => {
   }
 };
 
-exports.initTransactions = {
+module.exports = {
   initDrinksTransaction,
   dropDrinksTransaction,
   initBakedGoodsTransaction,

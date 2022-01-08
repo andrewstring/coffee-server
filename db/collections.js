@@ -1,32 +1,32 @@
-const drinks = require("../Models/drinks").default;
-const bakedGoods = require("../Models/bakedGoods").default;
-const run = require("./connect").run;
+const drinks = require("../Models/drinks");
+const bakedGoods = require("../Models/baked-goods");
+const runTransaction = require("./connect");
+
 const {
   initDrinksTransaction,
   dropDrinksTransaction,
   initBakedGoodsTransaction,
   dropBakedGoodsTransaction,
-} = require("./transactions").initTransactions;
+} = require("./transactions");
 
 const initDrinks = async () => {
-  await run(initDrinksTransaction);
+  await runTransaction(initDrinksTransaction);
 };
 const dropDrinks = async () => {
-  await run(dropDrinksTransaction);
+  await runTransaction(dropDrinksTransaction);
 };
-
 const initBakedGoods = async () => {
-  await run(initBakedGoodsTransaction);
+  await runTransaction(initBakedGoodsTransaction);
 };
 const dropBakedGoods = async () => {
-  await run(dropBakedGoodsTransaction);
+  await runTransaction(dropBakedGoodsTransaction);
 };
 
 const commands = {
-  initDrinks: initDrinks,
-  dropDrinks: dropDrinks,
-  initBakedGoods: initBakedGoods,
-  dropBakedGoods: dropBakedGoods,
+  initDrinks,
+  dropDrinks,
+  initBakedGoods,
+  dropBakedGoods,
 };
 
 const main = () => {

@@ -56,4 +56,4 @@ const validator = {
   },
 };
 
-exports.default = { key, validator };
+module.exports = { key, validator };

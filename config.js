@@ -10,4 +10,4 @@ const mongoConfig = {
   url: "mongodb+srv://admin:Fellow3.0!@dailyjoecoffee.b57as.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 };
 
-exports.config = { serverConfig, mongoConfig };
+module.exports = { serverConfig, mongoConfig };

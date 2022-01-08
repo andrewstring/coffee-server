@@ -1,8 +1,8 @@
 const express = require("express");
-const connect = require("./db/connect").default;
+const connect = require("./db/connect");
 const { MongoClient, ObjectId } = require("mongodb");
-const { serverConfig, mongoConfig } = require("./config").config;
-const writeError = require("./error-writing").writeError;
+const { serverConfig, mongoConfig } = require("./config");
+const writeError = require("./error-writing");
 const app = express();
 
 //error logging

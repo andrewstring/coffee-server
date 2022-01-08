@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { loggingPath } = require("./config").config.serverConfig;
+const { loggingPath } = require("./config").serverConfig;
 
 const writeError = (err) => {
   console.log(err);
@@ -10,4 +10,4 @@ const writeError = (err) => {
   });
 };
 
-exports.writeError = writeError;
+module.exports = writeError;
