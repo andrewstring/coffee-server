@@ -112,6 +112,6 @@ app.delete("/:type/:id", async (req, res) => {
 });
 
 //start server
-app.listen(serverConfig.port, () => {
+app.listen(process.env.PORT || serverConfig.port, () => {
   console.log(`SUCCESS: app listening on port ${serverConfig.port}`);
 });
