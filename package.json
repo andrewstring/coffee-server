@@ -1,8 +1,16 @@
 {
+  "name": "coffee-server",
+  "author": "andrew stringfellow",
+  "version": "1.0.0",
+  "description": "back-end api server for daily joe coffee",
+  "main": "app.js",
   "type": "commonjs",
   "dependencies": {
     "express": "^4.17.2",
     "mongodb": "^4.2.2"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "scripts": {
     "start": "node app.js",
