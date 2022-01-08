@@ -1,19 +1,40 @@
+const drinks = require("../Models/drinks").default;
+const bakedGoods = require("../Models/bakedGoods").default;
+
 //Init transactions
-const initDrinksTransaction = (db) => {
+const initDrinksTransaction = async (db) => {
   try {
-    db.createCollection(drinks.key, drinks.validator);
+    await db.createCollection(drinks.key);
   } catch (err) {
     console.error(err);
   }
 };
-const initBakedGoodsTransaction = (db) => {
+const dropDrinksTransaction = async (db) => {
   try {
-    db.createCollection(bakedGoods.key, bakedGoods.validator);
+    await db.collection("drinks").drop();
   } catch (err) {
     console.error(err);
   }
 };
 
-//Rest Transactions
+const initBakedGoodsTransaction = async (db) => {
+  try {
+    await db.createCollection(bakedGoods.key, bakedGoods.validator);
+  } catch (err) {
+    console.error(err);
+  }
+};
+const dropBakedGoodsTransaction = async (db) => {
+  try {
+    await db.collection("bakedGoods").drop();
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-exports.init = { initDrinksTransaction, initBakedGoodsTransaction };
+exports.initTransactions = {
+  initDrinksTransaction,
+  dropDrinksTransaction,
+  initBakedGoodsTransaction,
+  dropBakedGoodsTransaction,
+};

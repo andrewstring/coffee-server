@@ -6,13 +6,13 @@ const validator = {
       bsonType: "object",
       required: ["title", "description", "cost", "dateAdded"],
       properties: {
-        picture: {
-          bsonType: "string",
-          description: "url of the picture, not required",
-        },
         title: {
           bsonType: "string",
           description: "must be a string and must be required",
+        },
+        picture: {
+          bsonType: "string",
+          description: "url of the picture, not required",
         },
         description: {
           bsonType: "string",
@@ -45,6 +45,11 @@ const validator = {
         dateAdded: {
           bsonType: "date",
           description: "date that must be required, automatically inserted",
+        },
+        dateUpdated: {
+          bsonType: "date",
+          description:
+            "updated date that must be required, automatically inserted",
         },
       },
     },

@@ -3,5 +3,12 @@
   "dependencies": {
     "express": "^4.17.2",
     "mongodb": "^4.2.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "initDrinks": "node db/collections.js initDrinks",
+    "dropDrinks": "node db/collections.js dropDrinks",
+    "initBakedGoods": "node db/collections.js initBakedGoods",
+    "dropBakedGoods": "node db/collections.js dropBakedGoods"
   }
 }
