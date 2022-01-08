@@ -1,5 +1,4 @@
 /node_modules
-/config.js
 /samples.js
 /app_err.log
 .DS_Store
