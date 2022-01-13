@@ -1,7 +1,11 @@
-var express = require("express");
+const express = require("express");
+
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 const { MongoClient, ObjectID, ObjectId } = require("mongodb");
 const { mongoConfig } = require("../config");
-var adminRouter = express.Router();
+const adminRouter = express.Router();
 
 const client = new MongoClient(mongoConfig.url);
 const collection = "authentication";
@@ -17,7 +21,7 @@ adminRouter.get("/", async (req, res) => {
     const array = await cursor.toArray();
     res.send(array);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();
@@ -38,7 +42,7 @@ adminRouter.get("/:id", async (req, res) => {
     const array = await cursor.toArray();
     res.send(array);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();
@@ -57,7 +61,7 @@ adminRouter.post("/", async (req, res) => {
       .insertOne(document);
     res.send(response);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();
@@ -78,7 +82,7 @@ adminRouter.delete("/:id", async (req, res) => {
       .deleteMany(query);
     res.send(response);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();

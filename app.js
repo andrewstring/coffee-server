@@ -19,5 +19,5 @@ app.use("/admin", adminRouter);
 //start server
 app.listen(process.argv[2] || process.env.PORT || serverConfig.port, () => {
   const port = process.argv[2] || process.env.PORT || serverConfig.port;
-  console.log(`SUCCESS: app listening on port ${port}`);
+  console.trace(`SUCCESS: app listening on port ${port}`);
 });

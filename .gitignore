@@ -3,3 +3,4 @@
 /app_err.log
 .DS_Store
 TODO
+/config.js

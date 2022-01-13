@@ -6,7 +6,9 @@
   "main": "app.js",
   "type": "commonjs",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.2.2"
   },
   "engines": {
@@ -14,9 +16,18 @@
   },
   "scripts": {
     "start": "node app.js",
-    "initDrinks": "node db/collections.js initDrinks",
-    "dropDrinks": "node db/collections.js dropDrinks",
-    "initBakedGoods": "node db/collections.js initBakedGoods",
-    "dropBakedGoods": "node db/collections.js dropBakedGoods"
+    "startDev": "nodemon app.js",
+    "initDrinks": "node Db/Commands/collections.js initDrinks",
+    "dropDrinks": "node Db/Commands/collections.js dropDrinks",
+    "initBakedGoods": "node Db/Commands/collections.js initBakedGoods",
+    "dropBakedGoods": "node Db/Commands/collections.js dropBakedGoods",
+    "initAdminCredentials": "node Db/Commands/collections.js initAdminCredentials",
+    "dropAdminCredentials": "node Db/Commands/collections.js dropAdminCredentials",
+    "deleteAllAdmins": "node Db/Commands/adminCredentials.js deleteAllAdmins",
+    "deleteAdmin": "node Db/Commands/adminCredentials.js deleteAdmin",
+    "createAdmin": "node Db/Commands/adminCredentials.js createAdmin"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

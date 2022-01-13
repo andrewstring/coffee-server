@@ -1,7 +1,7 @@
 var express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 const { mongoConfig } = require("../config");
-var clientRouter = express.Router();
+const clientRouter = express.Router();
 
 const client = new MongoClient(mongoConfig.url);
 
@@ -14,7 +14,7 @@ clientRouter.get("/:type", async (req, res) => {
     const array = await cursor.toArray();
     res.send(array);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();
@@ -33,7 +33,7 @@ clientRouter.get("/:type/:id", async (req, res) => {
     const array = await cursor.toArray();
     res.send(array);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();
@@ -53,7 +53,7 @@ clientRouter.post("/:type/", async (req, res) => {
       .insertOne(document);
     res.send(response);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();
@@ -76,7 +76,7 @@ clientRouter.put("/:type/:id", async (req, res) => {
       .updateOne({ _id: id }, { $set: document });
     res.send(response);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();
@@ -97,7 +97,7 @@ clientRouter.delete("/:type/:id", async (req, res) => {
       .deleteOne(query);
     res.send(response);
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } finally {
     res.end();
     await client.close();
