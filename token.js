@@ -1,12 +1,30 @@
 const jwt = require("jsonwebtoken");
-const { privateKey } = require("config");
+const { privateKey } = require("./config");
 
-const generateToken = async (db, collection, credentials) => {
-  jwt.sign(credentials, privateKey, { algorithm: "RS256" }, (err, token) => {
+const generateToken = async (client, db, collection, credentials, res) => {
+  await jwt.sign(credentials, privateKey, async (err, token) => {
     if (err) {
-      throw new Error("ERROR: Issue Generating Token");
     } else {
-      console.log(token);
+      const document = tokenDocument(token);
+      await client.db(db).collection(collection).insertOne(document);
+      res.send(document);
     }
   });
 };
+
+const validateToken = async (token, res) => {
+  try {
+    res.send(await jwt.verify(token, privateKey));
+  } catch {
+    res.send("invalid");
+  }
+};
+
+const tokenDocument = (token) => {
+  return {
+    token: token,
+    dateCreated: new Date(),
+  };
+};
+
+module.exports = { generateToken, validateToken };

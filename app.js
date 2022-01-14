@@ -1,5 +1,5 @@
 const express = require("express");
-const { clientRouter, adminRouter } = require("./Routes");
+const { clientRouter, adminRouter, tokenRouter } = require("./Routes");
 const { serverConfig } = require("./config");
 const writeError = require("./error-writing");
 const app = express();
@@ -15,9 +15,10 @@ app.use(express.json());
 //routes
 app.use("/client", clientRouter);
 app.use("/admin", adminRouter);
+app.use("/token", tokenRouter);
 
 //start server
 app.listen(process.argv[2] || process.env.PORT || serverConfig.port, () => {
   const port = process.argv[2] || process.env.PORT || serverConfig.port;
-  console.trace(`SUCCESS: app listening on port ${port}`);
+  console.log(`SUCCESS: app listening on port ${port}`);
 });
